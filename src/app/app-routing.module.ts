@@ -10,11 +10,13 @@ import { SearchCandidatesComponent } from './search-candidates/search-candidates
 import { SignupComponent } from './signup/signup.component';
 import { ViewCandidateComponent } from './view-candidate/view-candidate.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 
 const routes: Routes = [
   {path: '', component: WelcomePageComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
+  {path:'adminDashboard',component:AdmindashboardComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'search',component: SearchCandidatesComponent},
   {path: 'add',component: AddCandidateComponent},

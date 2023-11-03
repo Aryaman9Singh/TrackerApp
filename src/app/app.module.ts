@@ -26,6 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { MentorviewComponent } from './mentorview/mentorview.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     WelcomePageComponent,
     EditPageComponent,
     ConfirmDialogComponent,
-    EditModalComponent
+    EditModalComponent,
+    MentorviewComponent,
+    AdmindashboardComponent
   ],
   imports: [
     BrowserModule,
