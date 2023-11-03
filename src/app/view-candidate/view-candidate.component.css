@@ -1,9 +1,14 @@
-/* Sticky columns */
 .sticky-column {
   position: sticky;
   left: 0;
   background-color: #f2f2f2;
-  z-index: 1; /* Ensure the first sticky column has the lowest z-index */
+  z-index: 1; 
+}
+.sticky-row {
+  position: sticky;
+ 
+  top:100px;
+  z-index: 1; 
 }
 .buttons{
   background-color: #007BFF;
@@ -16,7 +21,6 @@
   cursor: pointer;
 }
 
-/* Style the container */
 .container {
   display:inline-block;
 }
@@ -24,91 +28,82 @@
   border:none;
 }
 
-/* Style the table */
 .table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+ border-collapse: collapse; 
+  
 }
 
-/* Style the table header */
 .table th {
   background-color: #f2f2f2;
   font-weight: bold;
-  text-align: left;
-  padding: 12px; 
-  width: fit-content;
-  border: 1px solid #ddd;
+margin-left: auto;
+margin-right: auto;
+ min-width: 200px;
+  border: 2px solid #000000;
+ 
 }
 
-/* Style the table rows */
 .table td {
-  padding: 10px; /* Increased padding for better readability */
+  padding: 3px; 
   border: 1px solid #ddd;
 }
 
-/* Style alternate rows with a different background color */
+
 .table tbody tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* Hover effect on rows */
 .table tbody tr:hover {
   background-color: #ddd;
 }
 
-/* View attachment button styles */
 .view-attachment-button {
   color: blue;
   cursor: pointer;
   text-decoration: underline;
-  transition: color 0.3s ease; /* Smooth transition effect */
+  transition: color 0.3s ease; 
 }
 
 .view-attachment-button:hover {
   color: darkblue;
 }
 
-/* Styles for the modal */
 .modal {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1040; /* Ensure the modal is above other elements */
+  z-index: 1040; 
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background overlay */
-  opacity: 0; /* Initially hidden */
-  pointer-events: none; /* Initially hidden, but allows clicks on modal when shown */
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0; 
+  pointer-events: none; 
   transition: opacity 0.3s ease;
 }
 
-/* Show the modal */
 .modal.show {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Style for the modal content */
 .modal-content {
   border-radius: 10px;
-  width: 70%; /* Set the width to 70% of the screen */
-  margin: 0 auto; /* Center horizontally */
-  max-height: 70vh; /* Set the maximum height to 70% of the viewport height */
-  /* overflow-y: auto; Add a vertical scrollbar if content exceeds the maximum height */
+  width: 70%; 
+  margin: 0 auto; 
+  max-height: 70vh; 
   z-index: 1050; 
 }
 
-/* Style for the modal body (adjust as needed) */
 .modal-body {
   text-align: center;
   padding: 20px;
 }
 
-/* Style for the modal footer (adjust as needed) */
+
 .modal-footer {
   justify-content: center;
 }
