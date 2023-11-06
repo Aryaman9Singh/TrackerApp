@@ -1,110 +1,109 @@
 .sticky-column {
-    position: sticky;
-    left: 0;
-    background-color: #f2f2f2;
-    z-index: 1; 
-  }
-  .sticky-row {
-    position: sticky;
-   
-    top:100px;
-    z-index: 1; 
-  }
-  .buttons{
-    background-color: #007BFF;
-    color: #fff;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-  }
+  position: sticky;
+  left: 0;
+  background-color: #f2f2f2;
+  z-index: 1; 
+}
+.sticky-row {
+  position: sticky;
+ 
+  top:100px;
+  z-index: 1; 
+}
+.buttons{
+  background-color: #007BFF;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.container {
+  display:inline-block;
+}
+.inputBox{
+  border:none;
+}
+
+.table {
+  width: 100%;
+ border-collapse: collapse; 
   
-  .container {
-    display:inline-block;
-  }
-  .inputBox{
-    border:none;
-  }
-  
-  .table {
-    width: 100%;
-   border-collapse: collapse; 
-    
-  }
-  
-  .table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  margin-left: auto;
-  margin-right: auto;
-   min-width: 200px;
-    border: 2px solid #000000;
-   
-  }
-  
-  .table td {
-    padding: 3px; 
-    border: 1px solid #ddd;
-  }
-  
-  
-  .table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #ddd;
-  }
-  
-  .view-attachment-button {
-    color: blue;
-    cursor: pointer;
-    text-decoration: underline;
-    transition: color 0.3s ease; 
-  }
-  
-  .view-attachment-button:hover {
-    color: darkblue;
-  }
-  
-  .modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1040; 
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0; 
-    pointer-events: none; 
-    transition: opacity 0.3s ease;
-  }
-  
-  .modal.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  .modal-content {
-    border-radius: 10px;
-    width: 70%; 
-    margin: 0 auto; 
-    max-height: 70vh; 
-    z-index: 1050; 
-  }
-  
-  .modal-body {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  
-  .modal-footer {
-    justify-content: center;
-  }
-  
+}
+
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+margin-left: auto;
+margin-right: auto;
+ min-width: 200px;
+  border: 2px solid #000000;
+ 
+}
+
+.table td {
+  padding: 3px; 
+  border: 1px solid #ddd;
+}
+
+
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+  background-color: #ddd;
+}
+
+.view-attachment-button {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease; 
+}
+
+.view-attachment-button:hover {
+  color: darkblue;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1040; 
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0; 
+  pointer-events: none; 
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  border-radius: 10px;
+  width: 70%; 
+  margin: 0 auto; 
+  max-height: 70vh; 
+  z-index: 1050; 
+}
+
+.modal-body {
+  text-align: center;
+  padding: 20px;
+}
+
+
+.modal-footer {
+  justify-content: center;
+}

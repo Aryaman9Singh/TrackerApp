@@ -32,10 +32,10 @@ private formatUsername(username: string): string {
     return username; 
   }
 
-logout() {
-  localStorage.removeItem('username');
-  sessionStorage.removeItem('token');
-}
+// logout() {
+//   localStorage.removeItem('username');
+//   sessionStorage.removeItem('token');
+// }
 changePassword(){
   alert("Method not implemented..!")
 }

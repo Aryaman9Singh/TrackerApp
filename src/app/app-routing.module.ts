@@ -14,6 +14,7 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
 import { hasroleGuard } from './hasrole.guard';
 import { AdminviewComponent } from './adminview/adminview.component';
 import { AdmincandidateComponent } from './admincandidate/admincandidate.component';
+import { MentorviewComponent } from './mentorview/mentorview.component';
 
 const routes: Routes = [
   {path: '', component: WelcomePageComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
 
   
 },
+{path:'viewOtherMentor',component:MentorviewComponent},
   {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
   {path: 'search',component: SearchCandidatesComponent,canActivate:[AuthGuard]},
   {path: 'add',component: AddCandidateComponent,canActivate:[AuthGuard]},

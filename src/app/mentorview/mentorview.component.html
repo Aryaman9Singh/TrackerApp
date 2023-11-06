@@ -1,1 +1,242 @@
-<p>mentorview works!</p>
+<div class="container">
+    <app-dashboard></app-dashboard>
+
+    <div style="
+    width: 100vw;  
+    overflow-x: scroll;
+    overflow-y: auto;">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>BaseLine Date</th>
+                    <th>Emp Id</th>
+                    <th>Emp Name</th>
+                    <th class="sticky-column">E-mail</th>
+                    <th>Local Grade</th>
+                    <th>Current Day Status</th>
+                    <th>Main Project</th>
+                    <th>Account Name</th>
+                    <th>Training Batch Id</th>
+                    <th>Mentor Name</th>
+                    <th>Training Score Feedback</th>
+                    <th>Bucket</th>
+                    <th>Qualitative Feedback</th>
+                    <th>Ocean Attempted Till Date</th>
+                    <th>Ocean Score If Attempted</th>
+                    <th>HS Certification Done</th>
+                    <th>Digi Dashboard Updated Regularly</th>
+                    <th>Account Shadows Done</th>
+                    <th>Current Status</th>
+                    <th>Upskilling While On Bench</th>
+                    <th>Current Initiative Involved In</th>
+                    <th>Work Done Last 3 Months</th>
+                    <th>Person Reachable</th>
+                    <th>PSC Remarks</th>
+                    <th>BTO (Average for Q3) Attendance</th>
+                    <th>Sapience Avg for Last 3 Months</th>
+                    <th>Leave Balance</th>
+                    <th>Leaves Applied in Last 3 Months</th>
+                    <th>BOTP Status</th>
+                    <th>Sub-Status</th>
+                    <th>College</th>
+                    <th>College Type</th>
+                    <th>Education</th>
+                    <th>Recruitment Swar Score</th>
+                    <th>Recruitment Aptitude Score</th>
+                    <th>Recruitment Coding Score</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let candidate of filteredCandidates">
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.baselineDate |
+                            date:'dd/MM/yyyy'
+                            }}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.empId}}</span>
+
+                    </td>
+
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.employeeName}}</span>
+
+                    </td>
+                    <td class="sticky-column">
+                        <span *ngIf="!candidate.isEdit">{{candidate.email}}</span>
+
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.localGrade}}</span>
+
+                    </td>
+
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.currentDayStatus}}</span>
+
+                    </td>
+
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.mainProject}}</span>
+
+                    </td>
+
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.accountName}}</span>
+
+                    </td>
+
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.trainingBatchId}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.mentorName}}</span>
+
+                    </td>
+
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.trainingScoreFeedback}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.bucket}}</span>
+
+                    </td>
+                    <td>
+                        <div style="width: 350px;
+                overflow: auto;
+                white-space: nowrap;">
+                            <span *ngIf="!candidate.isEdit">{{candidate.qualitativeFeedback}}</span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.oceanAttemptedTillDate}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.oceanScoreIfAttempted}}</span>
+
+                    </td>
+
+
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.hsCertificationDone}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.digiDashboardUpdatedRegularly
+                            | date:'dd/MM/yyyy'
+                            }}
+                        </span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.accountShadowsDone}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.currentStatus}}</span>
+
+                    </td>
+                    <td>
+                        <div style="width: 350px;
+                  overflow: auto;
+                  white-space: nowrap;">
+                            <span *ngIf="!candidate.isEdit">{{candidate.upskillingWhileOnBench}}</span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div style="width: 350px;
+                  overflow: auto;
+                  white-space: nowrap;">
+                            <span *ngIf="!candidate.isEdit">{{candidate.currentInitiativeInvolvedIn}}</span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div style="width: 350px;
+                  overflow: auto;
+                  white-space: nowrap;">
+                            <span *ngIf="!candidate.isEdit">{{candidate.workDoneLast3Months}}</span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.personReachable}}</span>
+
+                    </td>
+                    <td style="">
+                        <div style="width: 350px;
+                 overflow: auto;
+                 white-space: nowrap;
+                  
+                 ">
+                            <span *ngIf="!candidate.isEdit">{{candidate.pscRemarks}}</span>
+
+                        </div>
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.btoAverageQ3Attendance}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.sapienceAvgLast3Months}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.leaveBalance}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.leaveAppliedLast3Months}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.botpStatus}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.subStatus}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.college}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.collegeType}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.education}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.recruitmentSwarScore}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.recruitmentAptitudeScore}}</span>
+
+                    </td>
+                    <td>
+                        <span *ngIf="!candidate.isEdit">{{candidate.recruitmentCodingScore}}</span>
+
+                    </td>
+                    <td>
+                        <button id="delete" (click)="deleteCandidate(candidate)" class="buttons">Delete</button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -46,7 +46,7 @@ import { AdmincandidateComponent } from './admincandidate/admincandidate.compone
     EditPageComponent,
     ConfirmDialogComponent,
     EditModalComponent,
-    LiveClockComponent
+    LiveClockComponent,
     MentorviewComponent,
     AdmindashboardComponent,
     AdminviewComponent,
