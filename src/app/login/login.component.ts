@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'; // Import HttpClient to make HTTP requests
 import { Router } from '@angular/router'; // Import Router for navigation
+import { CheckService } from '../Services/check.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router, // Inject Router for navigation
+    private checkService:CheckService
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -47,7 +49,19 @@ export class LoginComponent implements OnInit {
             console.log(token);
             alert("Welcome "+username+",\nYou Logged In Successfully..!")
             
-            this.router.navigate(['/dashboard']); 
+
+            let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
+            let role: string = decodedJWT.role;
+            console.log("decoded role", role);
+           const check=this.checkService.checkRole(role);
+              if(check==true){
+                this.router.navigate(['/dashboard']); // Replace with your route
+              }
+              else{
+                this.router.navigate(['/adminDashboard'])
+              }
+
+            // Redirect to a dashboard or any other page upon successful login
             }else{
               this.loginFailed = true;
             }

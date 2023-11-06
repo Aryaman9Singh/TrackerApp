@@ -27,6 +27,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { LiveClockComponent } from './live-clock/live-clock.component';
+import { MentorviewComponent } from './mentorview/mentorview.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { LiveClockComponent } from './live-clock/live-clock.component';
     ConfirmDialogComponent,
     EditModalComponent,
     LiveClockComponent
+    MentorviewComponent,
+    AdmindashboardComponent
   ],
   imports: [
     BrowserModule,

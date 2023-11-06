@@ -2,7 +2,13 @@
   position: sticky;
   left: 0;
   background-color: #f2f2f2;
-  z-index: 1;
+  z-index: 1; 
+}
+.sticky-row {
+  position: sticky;
+ 
+  top:100px;
+  z-index: 1; 
 }
 
 .sticky-row {
@@ -34,7 +40,6 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-
 }
 
 .table th {
@@ -83,8 +88,8 @@
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0; 
+  pointer-events: none; 
   transition: opacity 0.3s ease;
 }
 
@@ -94,7 +99,6 @@
 }
 
 .modal-content {
-  border-radius: 10px;
   width: 70%;
   margin: 0 auto;
   max-height: 70vh;
