@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AdmindashboardComponent {
 
+  logout(){
+    console.log("logout button clicked")
+    sessionStorage.clear();
+  }
 }

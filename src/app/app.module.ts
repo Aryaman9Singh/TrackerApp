@@ -28,6 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { MentorviewComponent } from './mentorview/mentorview.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { AdminviewComponent } from './adminview/adminview.component';
+import { AdmincandidateComponent } from './admincandidate/admincandidate.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
     ConfirmDialogComponent,
     EditModalComponent,
     MentorviewComponent,
-    AdmindashboardComponent
+    AdmindashboardComponent,
+    AdminviewComponent,
+    AdmincandidateComponent
   ],
   imports: [
     BrowserModule,

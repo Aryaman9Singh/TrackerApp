@@ -11,16 +11,27 @@ import { SignupComponent } from './signup/signup.component';
 import { ViewCandidateComponent } from './view-candidate/view-candidate.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { hasroleGuard } from './hasrole.guard';
+import { AdminviewComponent } from './adminview/adminview.component';
+import { AdmincandidateComponent } from './admincandidate/admincandidate.component';
 
 const routes: Routes = [
   {path: '', component: WelcomePageComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path:'adminDashboard',component:AdmindashboardComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'search',component: SearchCandidatesComponent},
-  {path: 'add',component: AddCandidateComponent},
-  {path: 'view',component: ViewCandidateComponent},
+  {path:'adminDashboard',component:AdmindashboardComponent,canActivate:[AuthGuard],
+  children:[
+    {path:'adminView',component:AdminviewComponent},
+    {path:'add',component:AdmincandidateComponent}
+  ]
+
+  
+},
+  {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
+  {path: 'search',component: SearchCandidatesComponent,canActivate:[AuthGuard]},
+  {path: 'add',component: AddCandidateComponent,canActivate:[AuthGuard]},
+  {path: 'view',component: ViewCandidateComponent,canActivate:[AuthGuard]},
+  
   
   
 ];

@@ -1,1 +1,21 @@
-<p>admindashboard works!</p>
+<body>
+    <header>
+        <!-- <span style="border: 3px solid blue; color: black;">Admin</span>     -->
+        <h1> Welcome Admin</h1>
+
+        <div class="container" style="height: 40px; ">
+            <h1>Admin Dashboard</h1>
+            <span>
+                <!-- <button class="buttons" id="searchButton" routerLink="/search">Search Candidates</button> -->
+                <!-- <button class="buttons" id="addButton" routerLink="/adminDashboard/add">Add Candidates</button> -->
+                <button class="buttons" id="viewButton" routerLink="/adminDashboard/adminView">View All Candidates</button>
+            </span>
+        </div>
+        <div>
+            <button id="addAdmin" routerLink="/signup">Add admin</button>
+            <button id="logout" routerLink="" (click)="logout()">Logout</button>
+        </div>
+    </header>
+    <router-outlet></router-outlet>
+
+</body>
