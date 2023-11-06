@@ -52,13 +52,20 @@ export class LoginComponent implements OnInit {
 
             let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
             let role: string = decodedJWT.role;
+            let user:string=decodedJWT.sub;
+
+            sessionStorage.setItem('role',role);
+            console.log("decoded username",user);
             console.log("decoded role", role);
-           const check=this.checkService.checkRole(role);
-              if(check==true){
+           const check=this.checkService.checkMentor();
+              if(check){
                 this.router.navigate(['/dashboard']); // Replace with your route
+                return;
               }
-              else{
+              else if(this.checkService.checkAdmin()){
                 this.router.navigate(['/adminDashboard'])
+                return;
+
               }
 
             // Redirect to a dashboard or any other page upon successful login

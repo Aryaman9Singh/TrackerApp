@@ -6,13 +6,35 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
+//import { EditModalComponent } from '../edit-modal/edit-modal.component';
+ 
+ 
+// interface Interview {
+//   id:Number;
+//   empId:Number;
+//   employeeName: string;
+//   email:string ;
+//   projectName:string;
+//   projectCode:string;
+//   projectManager:string;
+//   projectLocation:string;
+//   interviewed:boolean;
+//   interviewDate:Date;
+//   feedback:string;
+//   feedbackDescription:string;
+//   comment:string;
+//   proposedDate:Date;
+//   mentorName:string;
+//   image:string;
+//   status:string;
+// }
+ 
 @Component({
-  selector: 'app-mentorview',
-  templateUrl: './mentorview.component.html',
-  styleUrls: ['./mentorview.component.css']
+  selector: 'app-adminview',
+  templateUrl: './adminview.component.html',
+  styleUrls: ['./adminview.component.css']
 })
-export class MentorviewComponent implements OnInit {
+export class AdminviewComponent implements OnInit {
   candidates: Interview[] = [];
   showAttachmentModal: boolean = false;
   selectedAttachment:string| SafeResourceUrl = '';
@@ -71,7 +93,6 @@ export class MentorviewComponent implements OnInit {
   ngOnInit(): void {
     this.fetchInterviews();
    this.checkData();
-   console.log("Hello Mentor view")
   }
  
   makeEditable(candidate:Interview){
@@ -219,5 +240,7 @@ export class MentorviewComponent implements OnInit {
         }
       );
   }
+ 
+ 
  
 }
