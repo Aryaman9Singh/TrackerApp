@@ -76,6 +76,14 @@ export class AddCandidateComponent {
     subStatus: ''
   };
 
+  localGradeOptions = [
+  'A3 - Associate',
+  'A4 - Analyst',
+  'A5 - Senior Analyst',
+  'B1 - Associate Consultant',
+  'B2 - Consultant',
+  'C1 - Senior Consultant'
+];
   file: { progress: number }[] = [];
 
   constructor(private datePipe: DatePipe, private httpClient: HttpClient) {}
@@ -359,8 +367,25 @@ export class AddCandidateComponent {
 
   uploadFile() {
     this.showFileInput = true;
-    // Now, you can send this.uploadedData to your backend API.
     this.saveInterviewData();
     alert('Candidates added successfully');
+  }
+
+  downloading = false;
+  downloadExcelSample() {
+    const filePath = 'assets/Bench File Sample.xlsx';
+    this.downloading = true;
+    setTimeout(() => {
+      this.downloading = false;
+    }, 3000);
+    fetch(filePath).then(response => response.blob()).then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Bench File Sample.xlsx'; 
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
   }
 }

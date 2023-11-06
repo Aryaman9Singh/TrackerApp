@@ -31,23 +31,25 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
    onSubmit(): void {
-    //this.router.navigate(['dashboard']);
+    
     if (this.loginForm.valid) {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
 
-      // Send the authentication request to your backend
+      
       this.http
         .post<any>('http://localhost:8089/admin/authenticate', { username, password }).subscribe(
           (response) => {
             if (response.jwt && response.jwt !== 'No') {
-            // Handle successful login response from the server
-            //const token = response.jwt;
-           // sessionStorage.setItem('token', token);
-            // localStorage.setItem('username', response.username);
+            
+            localStorage.setItem('username', username);
             let token = 'Bearer ' + response.jwt;
             sessionStorage.setItem('token', token);
             console.log('Login successful', response);
+            console.log(token);
+            alert("Welcome "+username+",\nYou Logged In Successfully..!")
+            
+
             let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
             let role: string = decodedJWT.role;
             let user:string=decodedJWT.sub;
@@ -72,10 +74,7 @@ export class LoginComponent implements OnInit {
             }
           },
           (error) => {
-            // Handle authentication error
             console.error('Login failed', error);
-            // Display an error message to the user
-            // You can set an error message property and display it in the template
             this.loginFailed = true;
           }
         );

@@ -26,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { LiveClockComponent } from './live-clock/live-clock.component';
 import { MentorviewComponent } from './mentorview/mentorview.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { AdminviewComponent } from './adminview/adminview.component';
@@ -45,6 +46,7 @@ import { AdmincandidateComponent } from './admincandidate/admincandidate.compone
     EditPageComponent,
     ConfirmDialogComponent,
     EditModalComponent,
+    LiveClockComponent
     MentorviewComponent,
     AdmindashboardComponent,
     AdminviewComponent,

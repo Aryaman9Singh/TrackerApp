@@ -3,6 +3,11 @@
   <div style = "display: flex;flex-direction: row;  align-items: center;">
 
     <a (click)="showFileInput = true" class = "importButton">Import Excel Candidate Data</a>
+    <button class="downloadButton" [class.downloading]="downloading" (click)="downloadExcelSample()">
+      <span *ngIf="downloading">Downloading.......</span>
+      <span *ngIf="!downloading">Download Sample Excel</span>
+    </button>
+
   </div>
     <div *ngIf="showFileInput">
       <input type="file" (change)="onFileChange($event)" accept=".xlsx">
@@ -60,7 +65,9 @@
         <tr>
           
           <td>
-            <input type="text" [(ngModel)]="newCandidate.localGrade" name="localGrade" required>
+            <select [(ngModel)]="newCandidate.localGrade" name="localGrade" required>
+              <option *ngFor="let option of localGradeOptions" [value]="option">{{ option }}</option>
+            </select>
           </td>
           <td>
             <input type="text" [(ngModel)]="newCandidate.currentDayStatus" name="currentDayStatus">
