@@ -24,6 +24,21 @@ app-dashboard {
     background-color: #0056b3;
 
   }
+  .downloadButton{
+    background-color: green;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      margin-left: 620px;
+  }
+  .downloadButton:hover{
+    background-color: rgb(2, 177, 2);
+  }
+  
   .candidate-table {
     width: 100%;
     border-collapse: collapse;
@@ -49,3 +64,9 @@ app-dashboard {
   .add-button:hover {
     background-color: #0056b3;
   }
+
+    .add-candidate-container select,
+    .add-candidate-container input[type="date"] {
+      width: 90%;
+      padding: 3px;
+    }

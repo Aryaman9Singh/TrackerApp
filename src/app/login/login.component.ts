@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router // Inject Router for navigation
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -29,35 +29,31 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
    onSubmit(): void {
-    //this.router.navigate(['dashboard']);
+    
     if (this.loginForm.valid) {
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
 
-      // Send the authentication request to your backend
+      
       this.http
         .post<any>('http://localhost:8089/admin/authenticate', { username, password }).subscribe(
           (response) => {
             if (response.jwt && response.jwt !== 'No') {
-            // Handle successful login response from the server
-            //const token = response.jwt;
-           // sessionStorage.setItem('token', token);
-            // localStorage.setItem('username', response.username);
+            
+            localStorage.setItem('username', username);
             let token = 'Bearer ' + response.jwt;
             sessionStorage.setItem('token', token);
             console.log('Login successful', response);
             console.log(token);
-            // Redirect to a dashboard or any other page upon successful login
-            this.router.navigate(['/dashboard']); // Replace with your route
+            alert("Welcome "+username+",\nYou Logged In Successfully..!")
+            
+            this.router.navigate(['/dashboard']); 
             }else{
               this.loginFailed = true;
             }
           },
           (error) => {
-            // Handle authentication error
             console.error('Login failed', error);
-            // Display an error message to the user
-            // You can set an error message property and display it in the template
             this.loginFailed = true;
           }
         );

@@ -1,19 +1,35 @@
 <body>
     <header>
-        <h1> Welcome (User)</h1>
-
-        <div class="container" style="height: 40px; ">
+        <div >
+            <img src="../../assets/Capgemini_201x_logo.svg.png" alt="Your Image"
+                style="height: 44px; margin-top:9px;margin-left: 30px;align-items: center;">
+        </div>
+        <div class="container" style="height: 40px; display: flex; align-items: center;">
             <h1>Mentor Dashboard</h1>
-            <span>
-                <button class="buttons" id="searchButton" routerLink="/search">Search Candidates</button>
-                <button class="buttons" id="addButton" routerLink="/add">Add Candidates</button>
-                <button class="buttons" id="viewButton" routerLink="/view">View All Candidates</button>
-            </span>
         </div>
+        <div style="display: flex; flex-direction: row; align-items: center;">
+        <input type="text" style="border-radius: 20px; border-width: 2px; height: 30px;" class="form-control py-2 k"
+            [(ngModel)]="searchText" placeholder="Search Candidates" (input)="onSearchTextChange()" />
         <div>
-            <button id="addAdmin" routerLink="/signup">Add admin</button>
-            <button id="logout" routerLink="">Logout</button>
+            <button class="btn btn-outline-secondary buttons"
+                style="height: 30px; width: 60px;" (click)="clearSearch()">
+                <i class="fas fa-times"></i>Clear
+            </button>
         </div>
-    </header>
+    </div>
 
+    <div class="user-info" *ngIf="username">
+        <button class="dropbtn" (click)="toggleDropdown()" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
+            Welcome, {{ username }}. ⮛<i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" [ngClass]="{'show': dropdownOpen}" (mouseenter)="showDropdown()"
+            (mouseleave)="hideDropdown()">
+            <a routerLink="/signup">➕ Add Admin</a>
+            <a routerLink="/add">➕ Add Candidate</a>
+            <a routerLink="/view">🪟 View Candidate</a>
+            <a (click)="changePassword()">🔄 Change Password</a>
+            <a (click)="logout()" routerLink="/">⤵️ Logout</a>
+        </div>
+    </div>
+</header>
 </body>
