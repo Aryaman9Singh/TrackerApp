@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
             let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
             let role: string = decodedJWT.role;
             let user:string=decodedJWT.sub;
-
+              sessionStorage.setItem('user',user.trim());
             sessionStorage.setItem('role',role);
             console.log("decoded username",user);
             console.log("decoded role", role);
