@@ -1,54 +1,55 @@
 <div class="container">
-    <span>All mentors</span>
+    <!-- <span>All mentors</span> -->
     <app-dashboard></app-dashboard>
 
     <div style="
     width: 100vw;  
     overflow-x: scroll;
-    overflow-y: auto;">
+    overflow-y: auto;
+    height: 100vh;">
 
         <table class="table">
-            <thead>
-                <tr>
-                    <th>BaseLine Date</th>
-                    <th>Emp Id</th>
-                    <th>Emp Name</th>
-                    <th class="sticky-column">E-mail</th>
-                    <th>Local Grade</th>
-                    <th>Current Day Status</th>
-                    <th>Main Project</th>
-                    <th>Account Name</th>
-                    <th>Training Batch Id</th>
-                    <th>Mentor Name</th>
-                    <th>Training Score Feedback</th>
-                    <th>Bucket</th>
-                    <th>Qualitative Feedback</th>
-                    <th>Ocean Attempted Till Date</th>
-                    <th>Ocean Score If Attempted</th>
-                    <th>HS Certification Done</th>
-                    <th>Digi Dashboard Updated Regularly</th>
-                    <th>Account Shadows Done</th>
-                    <th>Current Status</th>
-                    <th>Upskilling While On Bench</th>
-                    <th>Current Initiative Involved In</th>
-                    <th>Work Done Last 3 Months</th>
-                    <th>Person Reachable</th>
-                    <th>PSC Remarks</th>
-                    <th>BTO (Average for Q3) Attendance</th>
-                    <th>Sapience Avg for Last 3 Months</th>
-                    <th>Leave Balance</th>
-                    <th>Leaves Applied in Last 3 Months</th>
-                    <th>BOTP Status</th>
-                    <th>Sub-Status</th>
-                    <th>College</th>
-                    <th>College Type</th>
-                    <th>Education</th>
-                    <th>Recruitment Swar Score</th>
-                    <th>Recruitment Aptitude Score</th>
-                    <th>Recruitment Coding Score</th>
-                    <th>Action</th>
+            <thead  class = "sticky-row ">
+                <tr >
+                  <th><div class= "headerDiv">BaseLine Date </div></th>
+                  <th><div class= "headerDiv">Emp Id</div></th>
+                  <th><div class= "headerDiv">Emp Name</div></th>
+                  <th class="sticky-column"><div class= "headerDiv">E-mail</div></th>
+                  <th><div class= "headerDiv">Local Grade</div></th>
+                  <th><div class= "headerDiv">Current Day Status</div></th>
+                  <th><div class= "headerDiv">Main Project</div></th>
+                  <th><div class= "headerDiv">Account Name</div></th>
+                  <th><div class= "headerDiv">Training Batch Id</div></th>
+                  <th><div class= "headerDiv">Mentor Name</div></th>
+                  <th><div class= "headerDiv">Training Score Feedback</div></th>
+                  <th><div class= "headerDiv">Bucket</div></th>
+                  <th><div class= "headerDiv">Qualitative Feedback</div></th>
+                  <th><div class= "headerDiv">Ocean Attempted Till Date</div></th>
+                  <th><div class= "headerDiv">Ocean Score If Attempted</div></th>
+                  <th><div class= "headerDiv">HS Certification Done</div></th>
+                  <th><div class= "headerDiv">Digi Dashboard Updated Regularly</div></th>
+                  <th><div class= "headerDiv">Account Shadows Done</div></th>
+                  <th><div class= "headerDiv">Current Status</div></th>
+                  <th><div class= "headerDiv">Upskilling While On Bench</div></th>
+                  <th><div class= "headerDiv">Current Initiative Involved In</div></th>
+                  <th><div class= "headerDiv">Work Done Last 3 Months</div></th>
+                  <th><div class= "headerDiv">Person Reachable</div></th>
+                  <th><div class= "headerDiv">PSC Remarks</div></th>
+                  <th><div class= "headerDiv">BTO (Average for Q3) Attendance</div></th>
+                  <th><div class= "headerDiv">Sapience Avg for Last 3 Months</div></th>
+                  <th><div class= "headerDiv">Leave Balance</div></th>
+                  <th><div class= "headerDiv">Leaves Applied in Last 3 Months</div></th>
+                  <th><div class= "headerDiv">BOTP Status</div></th>
+                  <th><div class= "headerDiv">Sub-Status</div></th>
+                  <th><div class= "headerDiv">College</div></th>
+                  <th><div class= "headerDiv">College Type</div></th>
+                  <th><div class= "headerDiv">Education</div></th>
+                  <th><div class= "headerDiv">Recruitment Swar Score</div></th>
+                  <th><div class= "headerDiv">Recruitment Aptitude Score</div></th>
+                  <th><div class= "headerDiv">Recruitment Coding Score</div></th>
+                  <th><div class= "headerDiv">Action</div></th>
                 </tr>
-            </thead>
+              </thead>
             <tbody>
                 <tr *ngFor="let candidate of filteredCandidates">
                     <td>
