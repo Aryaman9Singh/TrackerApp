@@ -1,4 +1,5 @@
 <div class="container">
+  <span>Mentor Specfic</span>
   <app-dashboard></app-dashboard>
 
     <!-- <div style="display:flex ; flex-direction: row; align-items: baseline;   ">
@@ -63,22 +64,22 @@
       <tbody>
         <tr *ngFor="let candidate of filteredCandidates">
           <td>
-            <span (click)="makeEditable(candidate)" *ngIf="!candidate.isEdit">{{candidate.baselineDate |
+            <span  >{{candidate.baselineDate |
               date:'dd/MM/yyyy'}}</span>
-            <input *ngIf="candidate.isEdit" name="baselineDate" id="baselineDate" [(ngModel)]="candidate.baselineDate">
+            <!-- <input *ngIf="candidate.isEdit" name="baselineDate" id="baselineDate" [(ngModel)]="candidate.baselineDate"> -->
           </td>
           <td>
-            <span (click)="makeEditable(candidate)" *ngIf="!candidate.isEdit">{{candidate.empId}}</span>
-            <input *ngIf="candidate.isEdit" name="empId" id="empId" [(ngModel)]="candidate.empId">
+            <span >{{candidate.empId}}</span>
+            <!-- <input *ngIf="candidate.isEdit" name="empId" id="empId" [(ngModel)]="candidate.empId"> -->
           </td>
 
           <td>
-            <span (click)="makeEditable(candidate)" *ngIf="!candidate.isEdit">{{candidate.employeeName}}</span>
-            <input *ngIf="candidate.isEdit" name="employeeName" id="employeeName" [(ngModel)]="candidate.employeeName">
+            <span  >{{candidate.employeeName}}</span>
+            <!-- <input *ngIf="candidate.isEdit" name="employeeName" id="employeeName" [(ngModel)]="candidate.employeeName"> -->
           </td>
           <td class="sticky-column">
-            <span (click)="makeEditable(candidate)" *ngIf="!candidate.isEdit">{{candidate.email}}</span>
-            <input *ngIf="candidate.isEdit" name="email" id="email" [(ngModel)]="candidate.email">
+            <span (click)="makeEditable(candidate)" >{{candidate.email}}</span>
+            <!-- <input *ngIf="candidate.isEdit" name="email" id="email" [(ngModel)]="candidate.email"> -->
             <button *ngIf="candidate.isEdit" type="submit" (click)="save(candidate)" class="buttons">Save</button>
           </td>
           <td>
