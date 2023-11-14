@@ -1,5 +1,5 @@
-// import { Component } from '@angular/core';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ExportService } from '../export-service.service';
 
 @Component({
   selector: 'app-admindashboard',
@@ -10,7 +10,12 @@ export class AdmindashboardComponent {
   @Input() searchText: string = '';
   @Output() searchTextChange = new EventEmitter<string>();
   @Output() clearSearchEvent = new EventEmitter<void>();
-  constructor() {}
+  constructor(
+    private exportService: ExportService
+  ) {}
+  exportToExcel() {
+    this.exportService.triggerExportToExcel();
+  }
 
   ngOnInit(): void {}
   dropdownOpen = false;
@@ -52,6 +57,4 @@ private formatUsername(username: string): string {
   hideDropdown() {
     this.dropdownOpen = false;
   }
-  
-   
 }
