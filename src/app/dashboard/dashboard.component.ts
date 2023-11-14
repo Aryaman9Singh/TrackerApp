@@ -54,5 +54,6 @@ hideDropdown() {
   logout(){
     console.log("logout button clicked")
     sessionStorage.clear();
+    localStorage.clear();
   }
 }
