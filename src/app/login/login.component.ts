@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
       
       this.http
-        .post<any>('http://localhost:8089/admin/authenticate', { username, password }).subscribe(
+        .post<any>('http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/admin/authenticate', { username, password }).subscribe(
           (response) => {
             if (response.jwt && response.jwt !== 'No') {
             

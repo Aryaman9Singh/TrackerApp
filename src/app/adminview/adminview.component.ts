@@ -6,8 +6,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ExportService } from '../export-service.service';
-import * as XLSX from 'xlsx';
 //import { EditModalComponent } from '../edit-modal/edit-modal.component';
  
  
@@ -49,13 +47,8 @@ export class AdminviewComponent implements OnInit {
     private router: Router,
     private sanitizer: DomSanitizer,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog,
-    private exportService: ExportService
-  ) {
-    this.exportService.exportToExcel$.subscribe(() => {
-      this.exportToExcel();
-  });
-}
+    private dialog: MatDialog  // Inject MatDialog
+  ) {}
  
   filterCandidates() {
     console.log('Filtering candidates. Search Text:', this.searchText);
@@ -110,7 +103,7 @@ export class AdminviewComponent implements OnInit {
   save(candidate:Interview){
    this.makeEditable(candidate);
     console.log("from frontend",candidate);
-    this.http.post('http://localhost:8089/interviews/create', candidate).subscribe(data=>{
+    this.http.post('http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/interviews/create', candidate).subscribe(data=>{
       alert("data updated Successfully");
     },error=>console.log(error));
    
@@ -124,7 +117,7 @@ export class AdminviewComponent implements OnInit {
  
   fetchInterviews() {
     // Make an HTTP GET request to your Spring Boot backend API
-    this.http.get<Interview[]>('http://localhost:8089/interviews/all').subscribe(
+    this.http.get<Interview[]>('http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/interviews/all').subscribe(
       (response) => {
         this.candidates = response;
         this.filteredCandidates = this.candidates; // Initialize filtered candidates
@@ -160,7 +153,7 @@ export class AdminviewComponent implements OnInit {
  
   private performDeleteCandidate(empId: Number) {
     // Make an HTTP DELETE request with the correct URL
-    this.http.delete(`http://localhost:8089/interviews/delete/${empId}`, { responseType: 'text' })
+    this.http.delete(`http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/interviews/delete/${empId}`, { responseType: 'text' })
       .subscribe(
         (response) => {
           if (response === 'Interview deleted successfully') {
@@ -169,7 +162,7 @@ export class AdminviewComponent implements OnInit {
  
             // Reload the current route
             this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-              this.router.navigate(['/view']);
+              this.router.navigate(['/adminDashboard/adminView']);
             });
           } else {
             console.error(`Error deleting candidate with empId ${empId}: Unexpected response`);
@@ -198,28 +191,28 @@ export class AdminviewComponent implements OnInit {
     this.showAttachmentModal = false;
     this.selectedAttachment = '';
   }
-  openEditDialog(): void {
-      // Make an HTTP GET request to your Spring Boot backend API
-      this.http.put<Interview[]>('http://localhost:8089/interviews/update', this.candidates).subscribe(
-        (response) => {
-          this.candidates = response;
-          console.log('Interviews:', this.candidates);
-        },
-        (error) => {
-          console.error('Error updating interviews:', error);
-        }
-      );
+  // openEditDialog(): void {
+  //     // Make an HTTP GET request to your Spring Boot backend API
+  //     this.http.put<Interview[]>('http://localhost:8089/interviews/update', this.candidates).subscribe(
+  //       (response) => {
+  //         this.candidates = response;
+  //         console.log('Interviews:', this.candidates);
+  //       },
+  //       (error) => {
+  //         console.error('Error updating interviews:', error);
+  //       }
+  //     );
    
-  }
+  // }
   // edit(data:any){
   //   console.log("candidate data:",data.target.innerText);
   //   console.log("fdgf",this.filteredCandidates)
   // }
-  editCell(candidate: any) {
-    // Set the edited value to the item's value
-    this.editedValue = candidate.empId;
-    candidate.isEditing = true;
-  }
+  // editCell(candidate: any) {
+  //   // Set the edited value to the item's value
+  //   this.editedValue = candidate.empId;
+  //   candidate.isEditing = true;
+  // }
  
   // saveEditedValue(candidate: any) {
   //   candidate.empId = this.editedValue;
@@ -227,119 +220,27 @@ export class AdminviewComponent implements OnInit {
   //   // Send the updated data to the server or perform any other actions
   // }
  
-  saveEditedValue(candidate: any) {
-    // Update the candidate's empId with the edited value
-    candidate.empId = this.editedValue;
-    candidate.isEditing = false;
+  // saveEditedValue(candidate: any) {
+  //   // Update the candidate's empId with the edited value
+  //   candidate.empId = this.editedValue;
+  //   candidate.isEditing = false;
  
-    // Save the updated data to the database
-    const apiUrl = `http://localhost:8089/interviews/update`;
+  //   // Save the updated data to the database
+  //   const apiUrl = `http://localhost:8089/interviews/update`;
  
-    this.http.put<Interview[]>(apiUrl, [candidate]) // Wrap the single candidate in an array
-      .subscribe(
-        (updatedList: Interview[]) => {
-          console.log('Candidate updated successfully.');
-          // Handle the updated list here, e.g., update your local list with the new data
-          this.filteredCandidates = updatedList;
-        },
-        (error) => {
-          console.error('Error updating candidate:', error);
-        }
-      );
-  }
-
- exportToExcel() {
-
-  const headings = [
-     'BaseLine Date',
-     'Emp Id',
-     'Emp Name',
-      'E-mail',
-      'Local Grade',
-      'Current Day Status',
-      'Main Project',
-      'Account Name',
-      'Training Batch Id',
-      'Mentor Name',
-      'Training Score Feedback',
-      'Bucket',
-      'Qualitative Feedback',
-      'Ocean Attempted Till Date',
-      'Ocean Score If Attempted',
-      'HS Certification Done',
-      'Digi Dashboard Updated Regularly',
-      'Account Shadows Done',
-      'Current Status',
-      'Upskilling While On Bench',
-      'Current Initiative Involved In',
-      'Work Done Last 3 Months',
-      'Person Reachable',
-      'PSC Remarks',
-      'BTO (Average for Q3) Attendance',
-      'Sapience Avg for Last 3 Months',
-      'Leave Balance',
-      'Leaves Applied in Last 3 Months',
-      'BOTP Status',
-      'Sub-Status',
-      'College',
-      'College Type',
-      'Education',
-      'Recruitment Swar Score',
-      'Recruitment Aptitude Score',
-      'Recruitment Coding Score'
-  ];
-
-
-    const data = [headings, ...this.filteredCandidates.map(candidate => [
-      candidate.baselineDate,
-      candidate.empId,
-      candidate.employeeName,
-      candidate.email,
-      candidate.localGrade,
-      candidate.currentDayStatus,
-      candidate.mainProject,
-      candidate.accountName,
-      candidate.trainingBatchId,
-      candidate.mentorName,
-      candidate.trainingScoreFeedback,
-      candidate.bucket,
-      candidate.qualitativeFeedback,
-      candidate.oceanAttemptedTillDate,
-      candidate.oceanScoreIfAttempted,
-      candidate.hsCertificationDone,
-      candidate.digiDashboardUpdatedRegularly,
-      candidate.accountShadowsDone,
-      candidate.currentStatus,
-      candidate.upskillingWhileOnBench,
-      candidate.currentInitiativeInvolvedIn,
-      candidate.workDoneLast3Months,
-      candidate.personReachable,
-      candidate.pscRemarks,
-      candidate.btoAverageQ3Attendance,
-      candidate.sapienceAvgLast3Months,
-      candidate.leaveBalance,
-      candidate.leaveAppliedLast3Months,
-      candidate.botpStatus,
-      candidate.subStatus,
-      candidate.college,
-      candidate.collegeType,
-      candidate.education,
-      candidate.recruitmentSwarScore,
-      candidate.recruitmentAptitudeScore,
-      candidate.recruitmentCodingScore
-    ])];
-
-    // Create a worksheet
-    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
-  
-    // Create a workbook and add the worksheet
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Candidates');
-
-    // Generate a file name for the Excel file
-    const fileName = 'candidates.xlsx';
-
-    // Save the Excel file
-    XLSX.writeFile(wb, fileName);
-  }
+  //   this.http.put<Interview[]>(apiUrl, [candidate]) // Wrap the single candidate in an array
+  //     .subscribe(
+  //       (updatedList: Interview[]) => {
+  //         console.log('Candidate updated successfully.');
+  //         // Handle the updated list here, e.g., update your local list with the new data
+  //         this.filteredCandidates = updatedList;
+  //       },
+  //       (error) => {
+  //         console.error('Error updating candidate:', error);
+  //       }
+  //     );
+  // }
+ 
+ 
+ 
 }

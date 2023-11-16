@@ -83,7 +83,7 @@ export class MentorviewComponent implements OnInit {
   save(candidate: Interview) {
     this.makeEditable(candidate);
     console.log("from frontend", candidate);
-    this.http.post('http://localhost:8089/interviews/create', candidate).subscribe(data => {
+    this.http.post('http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/interviews/create', candidate).subscribe(data => {
       alert("data updated Successfully");
     }, error => console.log(error));
 
@@ -97,7 +97,7 @@ export class MentorviewComponent implements OnInit {
 
   fetchInterviews() {
     // Make an HTTP GET request to your Spring Boot backend API
-    this.http.get<Interview[]>('http://localhost:8089/interviews/all').subscribe(
+    this.http.get<Interview[]>('http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/interviews/all').subscribe(
       (response) => {
         this.candidates = response;
         this.filteredCandidates = this.candidates; // Initialize filtered candidates
@@ -133,7 +133,7 @@ export class MentorviewComponent implements OnInit {
 
   private performDeleteCandidate(empId: Number) {
     // Make an HTTP DELETE request with the correct URL
-    this.http.delete(`http://localhost:8089/interviews/delete/${empId}`, { responseType: 'text' })
+    this.http.delete(`http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/interviews/delete/${empId}`, { responseType: 'text' })
       .subscribe(
         (response) => {
           if (response === 'Interview deleted successfully') {
@@ -171,28 +171,28 @@ export class MentorviewComponent implements OnInit {
     this.showAttachmentModal = false;
     this.selectedAttachment = '';
   }
-  openEditDialog(): void {
-    // Make an HTTP GET request to your Spring Boot backend API
-    this.http.put<Interview[]>('http://localhost:8089/interviews/update', this.candidates).subscribe(
-      (response) => {
-        this.candidates = response;
-        console.log('Interviews:', this.candidates);
-      },
-      (error) => {
-        console.error('Error updating interviews:', error);
-      }
-    );
+  // openEditDialog(): void {
+  //   // Make an HTTP GET request to your Spring Boot backend API
+  //   this.http.put<Interview[]>('http://localhost:8089/interviews/update', this.candidates).subscribe(
+  //     (response) => {
+  //       this.candidates = response;
+  //       console.log('Interviews:', this.candidates);
+  //     },
+  //     (error) => {
+  //       console.error('Error updating interviews:', error);
+  //     }
+  //   );
 
-  }
+  // }
   // edit(data:any){
   //   console.log("candidate data:",data.target.innerText);
   //   console.log("fdgf",this.filteredCandidates)
   // }
-  editCell(candidate: any) {
-    // Set the edited value to the item's value
-    this.editedValue = candidate.empId;
-    candidate.isEditing = true;
-  }
+  // editCell(candidate: any) {
+  //   // Set the edited value to the item's value
+  //   this.editedValue = candidate.empId;
+  //   candidate.isEditing = true;
+  // }
 
   // saveEditedValue(candidate: any) {
   //   candidate.empId = this.editedValue;
@@ -200,26 +200,26 @@ export class MentorviewComponent implements OnInit {
   //   // Send the updated data to the server or perform any other actions
   // }
 
-  saveEditedValue(candidate: any) {
-    // Update the candidate's empId with the edited value
-    candidate.empId = this.editedValue;
-    candidate.isEditing = false;
+  // saveEditedValue(candidate: any) {
+  //   // Update the candidate's empId with the edited value
+  //   candidate.empId = this.editedValue;
+  //   candidate.isEditing = false;
 
-    // Save the updated data to the database
-    const apiUrl = `http://localhost:8089/interviews/update`;
+  //   // Save the updated data to the database
+  //   const apiUrl = `http://localhost:8089/interviews/update`;
 
-    this.http.put<Interview[]>(apiUrl, [candidate]) // Wrap the single candidate in an array
-      .subscribe(
-        (updatedList: Interview[]) => {
-          console.log('Candidate updated successfully.');
-          // Handle the updated list here, e.g., update your local list with the new data
-          this.filteredCandidates = updatedList;
-        },
-        (error) => {
-          console.error('Error updating candidate:', error);
-        }
-      );
-  }
+  //   this.http.put<Interview[]>(apiUrl, [candidate]) // Wrap the single candidate in an array
+  //     .subscribe(
+  //       (updatedList: Interview[]) => {
+  //         console.log('Candidate updated successfully.');
+  //         // Handle the updated list here, e.g., update your local list with the new data
+  //         this.filteredCandidates = updatedList;
+  //       },
+  //       (error) => {
+  //         console.error('Error updating candidate:', error);
+  //       }
+  //     );
+  // }
 
 
 

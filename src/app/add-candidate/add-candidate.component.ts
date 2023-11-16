@@ -165,7 +165,7 @@ export class AddCandidateComponent {
     // }
 
     // Make an HTTP POST request to your backend API
-    this.httpClient.post('http://localhost:8089/interviews/create', this.newCandidate)
+    this.httpClient.post('http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/interviews/create', this.newCandidate)
       .subscribe(
         (response) => {
           alert('Candidate added successfully!');
@@ -350,7 +350,7 @@ export class AddCandidateComponent {
   
 
   saveInterviewData() {
-    const apiUrl = 'http://localhost:8089/interviews/createall';
+    const apiUrl = 'http://mentor-dashboard-apis.digitalcloudplatform.com/Mentor-Dashboard/interviews/createall';
     console.log('Data sent to the backend:', this.uploadedData);
 
     this.httpClient.post(apiUrl, this.uploadedData).subscribe(
